@@ -1,6 +1,7 @@
 ### Ubuntu
 
 ```
+sudo -s
 apt-get update && apt-get -y install curl docker-compose git && (curl -sSL https://get.docker.com | sh)
 mkdir /etc/devprom && cd /etc/devprom && git clone https://github.com/devprom-dev/docker.git ./
 docker-compose -f ./compose.yaml up -d
