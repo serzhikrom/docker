@@ -1,0 +1,57 @@
+version: '2.0'
+services:
+ application:
+  image: devprom/alm:latest
+  ports:
+   - "80:80"
+   - "443:443"
+  links:
+   - mysql:mysql
+  volumes:
+   - /etc/localtime:/etc/localtime:ro
+   - /etc/timezone:/etc/timezone:ro
+   - /etc/devprom/apache2:/etc/apache2/sites-available
+  user: root
+  depends_on:
+   - mysql
+  networks:
+   alm_net_backend:
+    aliases:
+     - devprom-alm
+   alm_net_frontend:
+
+ mysql:
+  image: mysql:5.7
+  command: [mysqld, --character-set-server=utf8, --collation-server=utf8_bin]
+  ports:
+   - "3306:3306"
+  volumes:
+   - /var/lib/mysql:/var/lib/mysql:rw
+   - /etc/devprom/mysql:/etc/mysql/conf.d
+  env_file:
+   - .env_db_mysql
+  user: root
+  networks:
+   alm_net_backend:
+    aliases:
+     - mysql
+     - devprom-database
+     - mysql-database
+
+networks:
+  alm_net_frontend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+  alm_net_backend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.239.0/24
