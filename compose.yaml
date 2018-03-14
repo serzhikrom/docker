@@ -9,6 +9,7 @@ services:
    - mysql:mysql
   volumes:
    - /etc/devprom/apache2:/etc/apache2/sites-available
+   - /etc/devprom/backup:/var/www/devprom/backup
   user: root
   depends_on:
    - mysql
