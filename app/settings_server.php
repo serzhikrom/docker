@@ -47,9 +47,14 @@ define('SERVER_INTERNAL_NAME','');
 //define('MAX_FILE_SIZE',''); // Maximum allowed file size (in bytes) to be uploaded via forms
 
 // Addresses of external services
-define('PLANTUML_SERVER_URL', EnvironmentSettings::getServerUrl());
-define('MATH_TEX_IMG', EnvironmentSettings::getServerUrl() . '/math?math=');
-define('MATH_JAX_LIB_SRC', EnvironmentSettings::getServerUrl() . '/math/mathjax/MathJax.js?config=TeX-AMS_HTML');
+define('PLANTUML_SERVER_URL', 'http://plantuml.myalm.ru');
+//define('PLANTUML_SERVER_URL', EnvironmentSettings::getServerUrl());
+
+define('MATH_TEX_IMG', 'http://mathjax.myalm.ru/?math=');
+//define('MATH_TEX_IMG', EnvironmentSettings::getServerUrl() . '/math?math=');
+
+define('MATH_JAX_LIB_SRC', 'http://mathjax.myalm.ru/mathjax/MathJax.js?config=TeX-AMS_HTML');
+//define('MATH_JAX_LIB_SRC', EnvironmentSettings::getServerUrl() . '/math/mathjax/MathJax.js?config=TeX-AMS_HTML');
 
 // Allows anybody invite users into the system
 define('INVITE_USERS_ANYBODY',true);
