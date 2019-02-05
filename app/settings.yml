@@ -1,0 +1,8 @@
+parameters:
+    mailer_host: 127.0.0.1
+    mailer_port: '25'
+    pop3_host: ''
+    pop3_port: '143'
+    mailer_encryption: null
+    mailer_user: noreply
+    mailer_password: noreply
