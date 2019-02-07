@@ -12,7 +12,7 @@ RUN apt-get -y update && apt-get -y install apache2 mysql-server mysql-client \
   php7.0-mysqli php7.0-curl php7.0-imap php7.0-ldap php7.0-xml php7.0-mbstring php7.0-zip php7.0-imagick \
   zip unzip wget
 
-RUN a2enmod rewrite deflate filter setenvif headers ldap
+RUN a2enmod rewrite deflate filter setenvif headers ldap ssl
 RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/2.4/pandoc-2.4-1-amd64.deb && dpkg -i pandoc.deb
 
 #
