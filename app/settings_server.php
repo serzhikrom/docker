@@ -74,4 +74,4 @@ define('HELP_DOCS_URL','http://myalm.ru/docs');
 define('HELP_SUPPORT_URL','http://support.devprom.ru/issue/new');
 define('SERVICE_DOMAIN','myalm.ru');
 //define('CKEDITOR_EXTRAPLUGINS','markdown');
-define('INSTALL_DB_PASS', 'devprom_pass');
+
