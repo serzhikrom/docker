@@ -1,6 +1,6 @@
 #!/bin/bash
 cat << _EOF_ > Dockerfile
-FROM debian:latest
+FROM debian:stretch
 MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
