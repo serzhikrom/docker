@@ -56,7 +56,7 @@ VOLUME /var/www/devprom/backup
 
 #
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
-COPY php/devprom.ini /etc/php/apache2/conf.d/
+COPY php/devprom.ini /etc/php/7.3/apache2/conf.d/
 COPY mysql/devprom.cnf /etc/mysql/conf.d/
 COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBundle/Resources/config/settings.yml 
 COPY apache2/devprom.conf /etc/apache2/sites-available/
