@@ -8,8 +8,8 @@ ENV CROSS_COMPILE=/usr/bin/
 
 #
 RUN apt-get -y update && apt-get -y install apache2 mysql-server mysql-client \
-  php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-gd php7.0-common php7.0-mysql \
-  php7.0-mysqli php7.0-curl php7.0-imap php7.0-ldap php7.0-xml php7.0-mbstring php7.0-zip php7.0-imagick \
+  php7.2 php7.2-mysql libapache2-mod-php7.2 php7.2-gd php7.2-common php7.2-mysql \
+  php7.2-mysqli php7.2-curl php7.2-imap php7.2-ldap php7.2-xml php7.2-mbstring php7.2-zip php7.2-imagick \
   zip unzip wget
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy
