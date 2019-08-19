@@ -8,8 +8,8 @@ ENV CROSS_COMPILE=/usr/bin/
 
 #
 RUN apt-get -y update && apt-get -y install apache2 mysql-server mysql-client \
-  php7.2 php7.2-mysql libapache2-mod-php7.2 php7.2-gd php7.2-common php7.2-mysql \
-  php7.2-mysqli php7.2-curl php7.2-imap php7.2-ldap php7.2-xml php7.2-mbstring php7.2-zip php7.2-imagick \
+  php php-mysql libapache2-mod-php php-gd php-common php-mysql \
+  php-mysqli php-curl php-imap php-ldap php-xml php-mbstring php-zip php-imagick \
   zip unzip wget
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy
@@ -56,7 +56,7 @@ VOLUME /var/www/devprom/backup
 
 #
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
-COPY php/devprom.ini /etc/php/7.0/apache2/conf.d/
+COPY php/devprom.ini /etc/php/apache2/conf.d/
 COPY mysql/devprom.cnf /etc/mysql/conf.d/
 COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBundle/Resources/config/settings.yml 
 COPY apache2/devprom.conf /etc/apache2/sites-available/
