@@ -7,7 +7,7 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 ENV CROSS_COMPILE=/usr/bin/
 
 #
-RUN apt-get -y update && apt-get -y install apache2 mysql-server mysql-client \
+RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default-mysql-client \
   php php-mysql libapache2-mod-php php-gd php-common php-mysql \
   php-mysqli php-curl php-imap php-ldap php-xml php-mbstring php-zip php-imagick \
   zip unzip wget
