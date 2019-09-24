@@ -47,7 +47,7 @@ RUN mkdir -p /var/www/devprom && mkdir /var/www/devprom/backup  && mkdir /var/ww
   mkdir /var/www/devprom/files && mkdir /var/www/devprom/logs
 
 #
-RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.8.2" && \
+RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.8.3" && \
   unzip /var/www/devprom/devprom.zip -d /var/www/devprom && mv /var/www/devprom/devprom /var/www/devprom/htdocs && \
   chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom && rm -f /var/www/devprom/*.sh
 
