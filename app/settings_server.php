@@ -2,7 +2,7 @@
 // MySQL server connection settings
 define('DB_HOST', 'localhost');
 define('DB_USER', 'devprom');
-define('DB_PASS', 'devprom_pass');
+define('DB_PASS', '');
 define('DB_NAME', 'devprom');
 
 // MySQL encryption algorithm
