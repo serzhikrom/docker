@@ -1,9 +1,9 @@
 <?php
 // MySQL server connection settings
-define('DB_HOST', '?HOST');
-define('DB_USER', '?USER');
-define('DB_PASS', '?PASS');
-define('DB_NAME', '?NAME');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'devprom');
+define('DB_PASS', 'devprom_pass');
+define('DB_NAME', 'devprom');
 
 // MySQL encryption algorithm
 define('MYSQL_ENCRYPTION_ALGORITHM', 'AES'); 
