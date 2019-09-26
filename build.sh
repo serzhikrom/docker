@@ -6,7 +6,7 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 #
 ENV CROSS_COMPILE=/usr/bin/
 ENV MYSQL_ROOT_PASSWORD=
-ENV MYSQL_PASSWORD devprom_pass
+ENV MYSQL_PASSWORD=
 
 #
 RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default-mysql-client \
