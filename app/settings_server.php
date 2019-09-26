@@ -70,8 +70,6 @@ define('DEVOPSSRV', 'http://api.devopsboard.com');
 define('DEVOPSKEY', 'af4078b6e4630da32f3c164d121ea2b1');
 define('UPDATES_URL', 'http://myalm.ru/news/tag/%D0%9E%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5');
 define('HELP_COMMUNITY_URL','http://club.devprom.ru');
-define('HELP_DOCS_URL','http://myalm.ru/docs');
 define('HELP_SUPPORT_URL','http://support.devprom.ru/issue/new');
-define('SERVICE_DOMAIN','myalm.ru');
 //define('CKEDITOR_EXTRAPLUGINS','markdown');
 
