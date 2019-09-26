@@ -5,6 +5,8 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
 ENV CROSS_COMPILE=/usr/bin/
+ENV MYSQL_ROOT_PASSWORD=
+ENV MYSQL_PASSWORD devprom_pass
 
 #
 RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default-mysql-client \
@@ -17,7 +19,7 @@ RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/2.4/pando
 
 #
 RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
-  mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER devprom@localhost IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'" && \
+  mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER devprom@localhost IDENTIFIED BY '$MYSQL_PASSWORD'" && \
   mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO devprom@localhost WITH GRANT OPTION"
 
 #
@@ -62,10 +64,6 @@ COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBund
 COPY app/settings_server.php /var/www/devprom/htdocs/settings_server.php
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
-
-RUN echo "define('INSTALL_DB_NAME','$MYSQL_DATABASE'); " >> /var/www/devprom/htdocs/settings_server.php && \
-    echo "define('INSTALL_DB_PASS','$MYSQL_PASSWORD'); " >> /var/www/devprom/htdocs/settings_server.php && \
-    echo "define('INSTALL_DB_SKIP','Y'); " >> /var/www/devprom/htdocs/settings_server.php
 
 CMD ( set -e && \
   service cron start && \
