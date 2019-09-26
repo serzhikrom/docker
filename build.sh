@@ -51,7 +51,7 @@ RUN mkdir -p /var/www/devprom && mkdir /var/www/devprom/backup  && mkdir /var/ww
 #
 RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.8.3" && \
   unzip /var/www/devprom/devprom.zip -d /var/www/devprom && mv /var/www/devprom/devprom /var/www/devprom/htdocs && \
-  chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom && rm -f /var/www/devprom/*.sh
+  rm -f /var/www/devprom/*.sh
 
 #
 VOLUME /var/www/devprom/backup
@@ -64,6 +64,8 @@ COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBund
 COPY app/settings_server.php /var/www/devprom/htdocs/settings_server.php
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
+
+RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
 
 CMD ( set -e && \
   service cron start && \
