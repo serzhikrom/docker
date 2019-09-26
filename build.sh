@@ -24,7 +24,7 @@ RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
 RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get install -y postfix sasl2-bin && \
+RUN apt-get install -y vim postfix sasl2-bin && \
   postconf -e "mydestination = localhost" && \
   postconf -e "myhostname = devprom.local" && \
   postconf -e "smtpd_sasl_auth_enable=yes" && \
@@ -59,8 +59,13 @@ RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY php/devprom.ini /etc/php/7.3/apache2/conf.d/
 COPY mysql/devprom.cnf /etc/mysql/conf.d/
 COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBundle/Resources/config/settings.yml 
+COPY app/settings_server.php /var/www/devprom/htdocs/settings_server.php
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
+
+RUN echo "define('INSTALL_DB_NAME','$MYSQL_DATABASE'); " >> /var/www/devprom/htdocs/settings_server.php && \
+    echo "define('INSTALL_DB_PASS','$MYSQL_PASSWORD'); " >> /var/www/devprom/htdocs/settings_server.php && \
+    echo "define('INSTALL_DB_SKIP','Y'); " >> /var/www/devprom/htdocs/settings_server.php
 
 CMD ( set -e && \
   service cron start && \
