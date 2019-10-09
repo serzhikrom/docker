@@ -9,7 +9,7 @@ define('DB_NAME', '?NAME');
 define('MYSQL_ENCRYPTION_ALGORITHM', 'AES'); 
 
 // Server root folder
-define('SERVER_ROOT', dirname(dirname(__FILE__)));
+define('SERVER_ROOT', '?ROOT');
 
 // Authorization options
 define('AUTHORIZATION_FACTORY', 'AuthorizationCookiesFactory');
