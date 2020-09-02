@@ -23,7 +23,7 @@ RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
   mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO devprom@localhost WITH GRANT OPTION"
 
 #
-RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog
+RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog libreoffice-common libreoffice-writer
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y vim postfix sasl2-bin && \
@@ -49,7 +49,7 @@ RUN mkdir -p /var/www/devprom && mkdir /var/www/devprom/backup  && mkdir /var/ww
   mkdir /var/www/devprom/files && mkdir /var/www/devprom/logs
 
 #
-RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.9.1" && \
+RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.10.0" && \
   unzip /var/www/devprom/devprom.zip -d /var/www/devprom && mv /var/www/devprom/devprom /var/www/devprom/htdocs && \
   rm -f /var/www/devprom/*.sh
 
