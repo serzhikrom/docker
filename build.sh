@@ -23,7 +23,7 @@ RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
   mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO devprom@localhost WITH GRANT OPTION"
 
 #
-RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog libreoffice-common libreoffice-writer
+RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog libreoffice-common libreoffice-writer default-jre libreoffice-java-common
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y vim postfix sasl2-bin && \
