@@ -23,7 +23,11 @@ RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
   mysql -u root -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO devprom@localhost WITH GRANT OPTION"
 
 #
-RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog libreoffice-common libreoffice-writer default-jre libreoffice-java-common
+RUN apt-get -y update && apt-get -y install tzdata apt-utils rsyslog default-jre
+
+RUN echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
+RUN apt-get -y update
+RUN apt-get -y install -t buster-backports libreoffice-common libreoffice-writer libreoffice-java-common
 
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y vim postfix sasl2-bin && \
