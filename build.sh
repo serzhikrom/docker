@@ -10,7 +10,7 @@ ENV MYSQL_PASSWORD=
 
 #
 RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default-mysql-client \
-  php php-mysql libapache2-mod-php php-gd php-common php-mysql \
+  php php-mysql libapache2-mod-php php-gd php-common php-bcmath php-mysql \
   php-mysqli php-curl php-imap php-ldap php-xml php-mbstring php-zip php-imagick \
   zip unzip wget
 
