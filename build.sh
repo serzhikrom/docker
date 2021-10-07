@@ -15,7 +15,6 @@ RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default
   zip unzip wget
 
 RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy
-RUN wget -O pandoc.deb https://github.com/jgm/pandoc/releases/download/2.4/pandoc-2.4-1-amd64.deb && dpkg -i pandoc.deb
 
 #
 RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
@@ -81,6 +80,6 @@ CMD ( set -e && \
   exec apache2 -DFOREGROUND )
 _EOF_
 
-docker pull debian:latest
+docker pull debian:9.13
 docker build -t devprom/alm:latest .
 docker push devprom/alm:latest
