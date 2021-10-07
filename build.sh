@@ -1,6 +1,6 @@
 #!/bin/bash
 cat << _EOF_ > Dockerfile
-FROM debian:9.13
+FROM debian:10.10
 MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
@@ -80,6 +80,6 @@ CMD ( set -e && \
   exec apache2 -DFOREGROUND )
 _EOF_
 
-docker pull debian:9.13
+docker pull debian:10.10
 docker build -t devprom/alm:latest .
 docker push devprom/alm:latest
