@@ -1,6 +1,6 @@
 #!/bin/bash
 cat << _EOF_ > Dockerfile
-FROM debian:latest
+FROM debian:9.13
 MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 #
