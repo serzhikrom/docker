@@ -14,7 +14,7 @@ RUN apt-get -y update && apt-get -y install apache2 default-mysql-server default
   php-mysqli php-curl php-imap php-ldap php-xml php-mbstring php-zip php-imagick \
   zip unzip wget git
 
-RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy
+RUN a2enmod rewrite deflate filter setenvif headers ldap ssl proxy authnz_ldap authn_anon session session_cookie request auth_form session_crypto
 
 #
 RUN service mysql start && mysqladmin -u root password $MYSQL_ROOT_PASSWORD && \
