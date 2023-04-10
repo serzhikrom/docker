@@ -66,6 +66,7 @@ COPY mysql/devprom.cnf /etc/mysql/conf.d/
 COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBundle/Resources/config/settings.yml 
 COPY app/settings_server.php /var/www/devprom/htdocs/settings_server.php
 COPY apache2/devprom.conf /etc/apache2/sites-available/
+COPY apache2/ldap.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
 
 RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
