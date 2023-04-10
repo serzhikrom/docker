@@ -44,7 +44,7 @@ RUN apt-get install -y vim postfix sasl2-bin && \
 COPY smtp/smtpd.conf /etc/postfix/sasl/smtpd.conf
 
 #
-RUN echo "* * * * * root /usr/bin/php /var/www/devprom/htdocs/core/processjobs.php >/dev/null 2>&1" >>  /etc/crontab
+RUN echo "* * * * * www-data /usr/bin/php /var/www/devprom/htdocs/core/processjobs.php >/dev/null 2>&1" >>  /etc/crontab
 RUN echo "" >>  /etc/crontab
 
 #
