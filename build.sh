@@ -52,7 +52,7 @@ RUN mkdir -p /var/www/devprom && mkdir /var/www/devprom/backup  && mkdir /var/ww
   mkdir /var/www/devprom/files && mkdir /var/www/devprom/logs
 
 #
-RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.15.1.1735" && \
+RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.15.2.1735" && \
   unzip /var/www/devprom/devprom.zip -d /var/www/devprom && mv /var/www/devprom/devprom /var/www/devprom/htdocs && \
   rm -f /var/www/devprom/*.sh
 
