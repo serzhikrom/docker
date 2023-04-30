@@ -64,7 +64,6 @@ RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY php/devprom.ini /etc/php/7.3/apache2/conf.d/
 COPY mysql/devprom.cnf /etc/mysql/conf.d/
 COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBundle/Resources/config/settings.yml 
-COPY app/settings_server.php /var/www/devprom/htdocs/settings_server.php
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 COPY apache2/ldap.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
