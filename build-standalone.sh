@@ -46,13 +46,15 @@ COPY smtp/smtpd.conf /etc/postfix/sasl/smtpd.conf
 #
 RUN echo "* * * * * www-data /usr/bin/php /var/www/devprom/htdocs/core/processjobs.php >/dev/null 2>&1" >>  /etc/crontab
 RUN echo "" >>  /etc/crontab
+RUN mkdir -p /var/www/devprom
 
 #
-RUN mkdir -p /var/www/devprom && mkdir /var/www/devprom/backup  && mkdir /var/www/devprom/update && \
+VOLUME /var/www/devprom
+
+#
+RUN mkdir /var/www/devprom/backup  && mkdir /var/www/devprom/update && \
   mkdir /var/www/devprom/files && mkdir /var/www/devprom/logs
-
-#
-VOLUME /var/www
+RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
 
 #
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
@@ -61,8 +63,6 @@ COPY mysql/devprom.cnf /etc/mysql/conf.d/
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 COPY apache2/ldap.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
-
-RUN chown -R www-data:www-data /var/www/devprom && chmod -R 755 /var/www/devprom
 
 CMD ( set -e && \
   service cron start && \
