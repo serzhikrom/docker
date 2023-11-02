@@ -52,18 +52,12 @@ RUN mkdir -p /var/www/devprom && mkdir /var/www/devprom/backup  && mkdir /var/ww
   mkdir /var/www/devprom/files && mkdir /var/www/devprom/logs
 
 #
-RUN wget -O /var/www/devprom/devprom.zip "https://myalm.ru/download/devprom-zip?v=3.15.2.1816" && \
-  unzip /var/www/devprom/devprom.zip -d /var/www/devprom && mv /var/www/devprom/devprom /var/www/devprom/htdocs && \
-  rm -f /var/www/devprom/*.sh
-
-#
-VOLUME /var/www/devprom/backup
+VOLUME /var/www
 
 #
 RUN rm /etc/apache2/sites-available/* && rm /etc/apache2/sites-enabled/*
 COPY php/devprom.ini /etc/php/7.3/apache2/conf.d/
 COPY mysql/devprom.cnf /etc/mysql/conf.d/
-COPY app/settings.yml /var/www/devprom/htdocs/co/bundles/Devprom/ApplicationBundle/Resources/config/settings.yml 
 COPY apache2/devprom.conf /etc/apache2/sites-available/
 COPY apache2/ldap.conf /etc/apache2/sites-available/
 RUN a2ensite devprom.conf
