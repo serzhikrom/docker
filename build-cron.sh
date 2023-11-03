@@ -3,7 +3,7 @@ cat << _EOF_ > Dockerfile
 FROM alpine:latest
 MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
-RUN apt-get update && apt-get -y install cron curl
+RUN apk update && apk add cron curl
 
 RUN echo '* * * * * root curl -L -m 1800 -k "http://127.0.0.1/tasks/command.php?class=runjobs"' >>  /etc/crontab
 
