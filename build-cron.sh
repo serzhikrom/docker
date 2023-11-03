@@ -7,7 +7,7 @@ RUN apk update && apk add curl
 
 RUN echo '* * * * * root curl -L -m 1800 -k "http://127.0.0.1/tasks/command.php?class=runjobs"' >>  /etc/crontab
 
-CMD ["cron", "-f"]
+CMD ["crond", "-f"]
 _EOF_
 
 docker pull alpine:latest
