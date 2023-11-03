@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  db:
+    env_file:
+      - .env
+    image: mariadb:latest
+    container_name: alm-db
+    network_mode: host
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      TZ: "Europe/Moscow"
+    volumes:
+     - ./mysql/devprom.cnf:/etc/mysql/conf.d/z-devprom.cnf
+     - dbdata:/var/lib/mysql
+
+  app:
+    image: devprom/alm-app:latest
+    container_name: alm-app
+    privileged: true
+    network_mode: host
+    ports:
+      - 80:80
+    restart: unless-stopped
+    volumes:
+     - /var/www/devprom:/var/www/devprom:rw
+    cap_add:
+      - SYS_NICE
+      - DAC_READ_SEARCH
+      - SYS_ADMIN
+volumes:
+  dbdata:
