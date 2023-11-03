@@ -1,5 +1,4 @@
 [mysqld]
-bind_address = *
 key_buffer_size = 2048M
 max_allowed_packet = 512M
 table_open_cache = 64
