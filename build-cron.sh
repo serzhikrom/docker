@@ -5,7 +5,7 @@ MAINTAINER Evgeny Savitsky <evgeny.savitsky@devprom.ru>
 
 RUN apk update && apk add curl
 
-RUN echo '* * * * * root curl -L -m 1800 -k "http://127.0.0.1/tasks/command.php?class=runjobs" > /dev/stdout ' >>  /etc/crontab
+RUN echo '* * * * * root curl -L -m 1800 -k "http://127.0.0.1/tasks/command.php?class=runjobs" > /proc/1/fd/1 ' >>  /etc/crontab
 
 CMD ["crond", "-f", "-l", "2"]
 _EOF_
