@@ -6,8 +6,7 @@ services:
      - .env
     image: mariadb:10.7
     container_name: alm-db
-    ports:
-     - 3306:3306
+    network_mode: host
     restart: unless-stopped
     environment:
      MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
