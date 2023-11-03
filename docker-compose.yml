@@ -15,7 +15,7 @@ services:
       TZ: "Europe/Moscow"
     volumes:
      - ./mysql/devprom.cnf:/etc/mysql/conf.d/z-devprom.cnf
-     - ./mysql/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+     - ./mysql/setup.sh:/docker-entrypoint-initdb.d/setup.sh
      - dbdata:/var/lib/mysql
 
   app:
