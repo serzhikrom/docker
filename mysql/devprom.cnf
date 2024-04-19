@@ -1,11 +1,12 @@
 [mysqld]
-key_buffer_size = 2048M
+transaction-isolation=READ-COMMITTED
+key_buffer_size = 128M
 max_allowed_packet = 512M
-table_open_cache = 64
+table_open_cache = 8000
 sort_buffer_size = 64M
 net_buffer_length = 8K
-read_buffer_size = 256K
-read_rnd_buffer_size = 512K
+read_buffer_size = 1M
+read_rnd_buffer_size = 2M
 myisam_sort_buffer_size = 256M
 query_cache_size = 256M
 query_cache_limit = 8M
@@ -14,15 +15,26 @@ query_cache_min_res_unit = 512
 ft_min_word_len = 3
 lower_case_table_names = 1
 group_concat_max_len = 4294967295
-wait_timeout = 10
-interactive_timeout = 10
-max_connections = 600
 open_files_limit = 8912
 low_priority_updates = 1
 innodb_buffer_pool_size=4G
-innodb_flush_log_at_trx_commit = 2
+innodb_flush_log_at_trx_commit = 0
 max_heap_table_size=1024M
 innodb_sort_buffer_size = 512M
-join_buffer_size = 512M
-innodb_lock_wait_timeout = 600
+join_buffer_size = 1G
 default-time-zone = '+00:00'
+table_definition_cache = 600
+
+wait_timeout = 10
+interactive_timeout = 10
+max_connections = 300
+max_statement_time = 30
+innodb_lock_wait_timeout = 60
+
+#log_slow_query = 1
+#long_query_time = 3
+#log_slow_query_file = slow.log
+
+#tmpdir = /run/m/
+#innodb_temp_data_file_path = /run/m/ibtmp1:128M:autoextend
+
